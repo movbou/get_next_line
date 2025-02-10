@@ -1,4 +1,33 @@
 
+char	*ft_reset_lstr(char *lstr)
+{
+	char	*tmp;
+	int		i;
+	int		j;
+
+	i = 0;
+	// Find the position of the first newline character or null terminator
+	while (lstr[i] != 0 && lstr[i] != '\n')
+		i++;
+	// If the entire string is read without a newline, free the memory and return 0
+	if (lstr[i] == 0)
+	{
+		free(lstr);
+		return (0);
+	}
+	// Allocate memory for the remaining part after the newline
+	tmp = (char *)malloc(sizeof(char) * (ft_strlen(lstr) - i + 1));
+	if (tmp == 0)
+		return (0);  // Return 0 on allocation failure
+	i++;  // Skip the newline character
+	j = 0;
+	// Copy the remaining characters to the new buffer
+	while (lstr[i] != 0)
+		tmp[j++] = lstr[i++];
+	tmp[j] = '\0';  // Null-terminate the new string
+	free(lstr);     // Free the old lstr
+	return (tmp);   // Return the updated lstr
+}
 char	*ft_get_line(char *lstr)
 {
 	char	*tmp;
@@ -6,13 +35,13 @@ char	*ft_get_line(char *lstr)
 
 	i = 0;
 	// Return 0 if lstr is empty
-	if (lstr[i] == 0)
+	if (lstr[0] == 0)
 		return (0);
 	// Find the position of the newline character or null terminator
 	while (lstr[i] != 0 && lstr[i] != '\n')
 		i++;
 	// Allocate memory for the extracted line (+2 to account for newline and null terminator)
-	tmp = (char *)malloc(sizeof(char) * (i + 2));
+	tmp = (char *)malloc(i + 2);
 	if (tmp == 0)
 		return (0);  // Return 0 on allocation failure
 	i = 0;
@@ -37,7 +66,7 @@ char	*ft_get_lstr(int fd, char *lstr)
 	int		result;
 
 	// Allocate memory for the buffer (+1 for null terminator)
-	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buffer = (char *)malloc((BUFFER_SIZE + 1));
 	if (buffer == 0)
 		return (0);  // Return 0 on allocation failure
 	result = 1;
