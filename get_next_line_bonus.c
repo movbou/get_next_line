@@ -26,7 +26,7 @@ char	*ft_reset_lstr(char *lstr)
 		free(lstr);
 		return (0);
 	}
-	tmp = (char *)malloc(sizeof(char) * (ft_strlen(lstr) - i + 1));
+	tmp = (char *)malloc((size_t)(ft_strlen(lstr) - i + 1));
 	if (tmp == 0)
 		return (0);
 	i++;
@@ -71,13 +71,13 @@ char	*ft_get_lstr(int fd, char *lstr)
 	char	*buffer;
 	int		result;
 
-	buffer = (char *)malloc(BUFFER_SIZE + 1);
+	buffer = (char *)malloc((size_t)(BUFFER_SIZE + 1));
 	if (buffer == 0)
 		return (0);
 	result = 1;
 	while (ft_strchr(lstr, '\n') == 0 && result != 0)
 	{
-		result = read(fd, buffer, BUFFER_SIZE);
+		result = read(fd, buffer, (BUFFER_SIZE));
 		if (result == -1)
 		{
 			free(buffer);
