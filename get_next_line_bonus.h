@@ -1,15 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: achajar <achajar@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/12 01:43:11 by achajar           #+#    #+#             */
+/*   Updated: 2025/02/12 01:43:12 by achajar          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
-#define GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <stddef.h> 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 7 
+# endif
 
-#ifndef BUFFER_SIZE
-#define BUFFER_SIZE 7 
-#endif
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <stddef.h> 
 
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *s);
