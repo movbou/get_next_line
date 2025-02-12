@@ -9,7 +9,7 @@
 /*   Updated: 2025/02/12 01:43:28 by achajar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+# include "get_next_line.h"
 char	*ft_reset_lstr(char *lstr)
 {
 	char	*tmp;
